@@ -31,6 +31,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="33dp"
+        android:src="@drawable/setavoltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:clickable="true"
+        android:onClick="voltarTL"
+        />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"

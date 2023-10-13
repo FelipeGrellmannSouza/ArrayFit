@@ -30,6 +30,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--                  Corpo                   -->
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="33dp"
+        android:clickable="true"
+        android:onClick="voltarTC"
+        android:src="@drawable/setavoltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView6"
@@ -44,7 +55,7 @@
         android:shadowDy="7"
         android:shadowRadius="2"
         android:text="Peencha os campos a seguir:"
-        android:textColor="#F8F7F7"
+        android:textColor="@color/white"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +71,7 @@
         android:layout_marginEnd="336dp"
         android:layout_marginBottom="10dp"
         android:text="Nome"
-        android:textColor="#FAF9F9"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +87,7 @@
         android:layout_marginEnd="340dp"
         android:layout_marginBottom="23dp"
         android:text="Celular"
-        android:textColor="#FAF9F9"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +103,7 @@
         android:layout_marginEnd="336dp"
         android:layout_marginBottom="23dp"
         android:text="Email"
-        android:textColor="#FAF8F8"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,10 +119,11 @@
         android:layout_marginEnd="336dp"
         android:layout_marginBottom="288dp"
         android:text="Senha"
-        android:textColor="#F4F0F0"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -136,13 +148,14 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="230dp"
-        android:background="#F6F2F2"
+        android:background="@color/white"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTextText8"
@@ -152,9 +165,9 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="166dp"
-        android:background="#FAF7F7"
+        android:background="@color/white"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -168,9 +181,9 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="102dp"
-        android:background="#FAF8F8"
+        android:background="@color/white"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -184,13 +197,12 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="37dp"
-        android:background="#F8F5F5"
-        android:ems="10"
+        android:background="@color/white"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText9" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editTextText9"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
