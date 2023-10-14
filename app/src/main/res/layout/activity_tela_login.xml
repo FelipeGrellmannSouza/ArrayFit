@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightGray"
-    tools:context=".TelaLogin">
+    tools:context=".activity.TelaLogin">
 
     <!--                   Titulo                   -->
     <androidx.constraintlayout.widget.ConstraintLayout

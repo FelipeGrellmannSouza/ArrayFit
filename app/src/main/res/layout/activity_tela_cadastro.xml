@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaCadastro"
+    tools:context=".activity.TelaCadastro"
     android:background="@color/lightGray">
         <!--                   Titulo                   -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,10 +65,10 @@
         android:text="Nome"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText7"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText7"
+        app:layout_constraintBottom_toBottomOf="@+id/edtNome"
+        app:layout_constraintEnd_toStartOf="@+id/edtNome"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextText7" />
+        app:layout_constraintTop_toTopOf="@+id/edtNome" />
 
     <TextView
         android:id="@+id/textView8"
@@ -77,10 +77,10 @@
         android:text="Celular"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText8"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText8"
+        app:layout_constraintBottom_toBottomOf="@+id/edtCelular"
+        app:layout_constraintEnd_toStartOf="@+id/edtCelular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextText8" />
+        app:layout_constraintTop_toTopOf="@+id/edtCelular" />
 
     <TextView
         android:id="@+id/textView9"
@@ -89,10 +89,10 @@
         android:text="Email"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText9"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText9"
+        app:layout_constraintBottom_toBottomOf="@+id/edtEmail"
+        app:layout_constraintEnd_toStartOf="@+id/edtEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextText9" />
+        app:layout_constraintTop_toTopOf="@+id/edtEmail" />
 
     <TextView
         android:id="@+id/textView10"
@@ -101,13 +101,13 @@
         android:text="Senha"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/edtSenha"
+        app:layout_constraintEnd_toStartOf="@+id/edtSenha"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toTopOf="@+id/edtSenha" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCadastrar"
         android:layout_width="260dp"
         android:layout_height="55dp"
         android:layout_marginStart="77dp"
@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/edtNome"
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
@@ -133,36 +133,36 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextText8"
+        android:id="@+id/edtCelular"
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:ems="10"
         android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/editTextText7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        app:layout_constraintStart_toStartOf="@+id/edtNome"
+        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
 
     <EditText
-        android:id="@+id/editTextText9"
+        android:id="@+id/edtEmail"
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextText8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText8" />
+        app:layout_constraintStart_toStartOf="@+id/edtCelular"
+        app:layout_constraintTop_toBottomOf="@+id/edtCelular" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/edtSenha"
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextText9"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText9"
+        app:layout_constraintStart_toStartOf="@+id/edtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

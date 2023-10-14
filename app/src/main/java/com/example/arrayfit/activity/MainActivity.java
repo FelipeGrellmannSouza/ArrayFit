@@ -1,10 +1,12 @@
-package com.example.arrayfit;
+package com.example.arrayfit.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.arrayfit.R;
 
 public class MainActivity extends AppCompatActivity {
 
