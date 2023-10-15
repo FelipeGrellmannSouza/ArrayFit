@@ -1,5 +1,6 @@
 package com.example.arrayfit.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,8 +11,15 @@ import android.widget.Toast;
 
 import com.example.arrayfit.R;
 import com.example.arrayfit.model.Usuario;
+import com.example.arrayfit.util.ConfigDb;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.StartupTime;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class TelaCadastro extends AppCompatActivity {
     Usuario usuario;
@@ -49,7 +57,7 @@ public class TelaCadastro extends AppCompatActivity {
                     if (!senha.isEmpty()){
 
                         //estanciando objeto usuario
-                        Usuario usuario = new Usuario();
+                        usuario = new Usuario();
 
                         usuario.setNome(nome);
                         usuario.setEmail(email);
@@ -58,8 +66,6 @@ public class TelaCadastro extends AppCompatActivity {
                         
                         //cadastro do usuario
                         cadastrarUsuario();
-
-
 
 
 
@@ -78,9 +84,34 @@ public class TelaCadastro extends AppCompatActivity {
     }
 
     private void cadastrarUsuario() {
+        autenticacao = ConfigDb.FirebaseAutenticacao();
 
+        autenticacao.createUserWithEmailAndPassword(
+                usuario.getEmail(), usuario.getSenha()
+        ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(TelaCadastro.this, "Sucesso ao Cadastrar o Usuario", Toast.LENGTH_SHORT).show();
+                }else {
+                    String exececao = "";
+
+                    try {
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        exececao = "Digite uma senha mais forte";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        exececao = "Digite um email válido";
+                    }catch (FirebaseAuthUserCollisionException e){
+                        exececao = "Essa conta já existe";
+                    }catch (Exception e){
+                        exececao = "Erro ao cadastrar usuario " + e.getMessage();
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(TelaCadastro.this, exececao, Toast.LENGTH_SHORT).show();
+                }
+            }});
     }
-
 
     public void voltarTC (View view){
         finish();
