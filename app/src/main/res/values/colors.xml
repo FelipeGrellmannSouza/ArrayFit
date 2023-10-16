@@ -3,6 +3,7 @@
     <color name="my_light_primary">#1e1e1e</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="shadowGray">#343434</color>
     <color name="lightGray">#5f5f5f</color>
     <color name="darkGray">#1e1e1e</color>
 </resources>
