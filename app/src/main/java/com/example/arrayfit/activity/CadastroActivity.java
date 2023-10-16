@@ -14,14 +14,13 @@ import com.example.arrayfit.model.Usuario;
 import com.example.arrayfit.util.ConfigDb;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.StartupTime;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
-public class TelaCadastro extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
     Usuario usuario;
     FirebaseAuth autenticacao;
     EditText edtNome, edtSenha, edtEmail, edtCelular;
@@ -85,14 +84,13 @@ public class TelaCadastro extends AppCompatActivity {
 
     private void cadastrarUsuario() {
         autenticacao = ConfigDb.FirebaseAutenticacao();
-
         autenticacao.createUserWithEmailAndPassword(
                 usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(TelaCadastro.this, "Sucesso ao Cadastrar o Usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Sucesso ao Cadastrar o Usuario", Toast.LENGTH_SHORT).show();
                 }else {
                     String exececao = "";
 
@@ -108,7 +106,7 @@ public class TelaCadastro extends AppCompatActivity {
                         exececao = "Erro ao cadastrar usuario " + e.getMessage();
                         e.printStackTrace();
                     }
-                    Toast.makeText(TelaCadastro.this, exececao, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, exececao, Toast.LENGTH_SHORT).show();
                 }
             }});
     }

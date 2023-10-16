@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.arrayfit">
 
     <application
@@ -13,10 +14,13 @@
         android:theme="@style/Theme.ArrayFit"
         tools:targetApi="31">
         <activity
-            android:name=".activity.TelaLogin"
+            android:name=".activity.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.TelaCadastro"
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CadastroActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

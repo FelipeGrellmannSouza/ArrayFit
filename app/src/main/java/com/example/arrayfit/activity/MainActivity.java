@@ -16,11 +16,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void btnCadastro (View view){
-        Intent intent = new Intent(MainActivity.this, TelaCadastro.class);
+        Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
         startActivity(intent);
     }
     public void btnLogin (View view){
-        Intent intent = new Intent(MainActivity.this, TelaLogin.class);
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
