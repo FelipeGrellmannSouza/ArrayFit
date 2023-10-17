@@ -67,10 +67,10 @@
             android:id="@+id/btnLogin"
             android:layout_width="350dp"
             android:layout_height="60dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/darkGray"
-            android:text="LOGIN"
             android:onClick="btnLogin"
-            android:layout_marginTop="30dp"/>
+            android:text="ENTRAR" />
 
         <Button
             android:id="@+id/btnCadastrar"
