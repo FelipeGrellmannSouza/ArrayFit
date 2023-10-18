@@ -46,7 +46,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         android:shadowColor="@color/black"
         android:shadowDx="7"
         android:shadowDy="7"
@@ -69,18 +69,6 @@
         app:layout_constraintEnd_toStartOf="@+id/edtNome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edtNome" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Celular"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edtCelular"
-        app:layout_constraintEnd_toStartOf="@+id/edtCelular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edtCelular" />
 
     <TextView
         android:id="@+id/textView9"
@@ -106,18 +94,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edtSenha" />
 
+
+    <TextView
+        android:id="@+id/TextViewGenero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genero"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rdgGenero"
+        app:layout_constraintEnd_toStartOf="@+id/rdgGenero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rdgGenero" />
+
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_width="260dp"
         android:layout_height="55dp"
         android:layout_marginStart="77dp"
         android:layout_marginEnd="74dp"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="88dp"
         android:onClick="validarCampos"
         android:text="CADASTRAR"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -134,17 +136,6 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/edtCelular"
-        android:layout_width="260dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/edtNome"
-        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
-
-    <EditText
         android:id="@+id/edtEmail"
         android:layout_width="260dp"
         android:layout_height="40dp"
@@ -152,8 +143,8 @@
         android:background="@color/white"
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/edtCelular"
-        app:layout_constraintTop_toBottomOf="@+id/edtCelular" />
+        app:layout_constraintStart_toStartOf="@+id/edtNome"
+        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
 
     <EditText
         android:id="@+id/edtSenha"
@@ -165,5 +156,62 @@
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <RadioGroup
+        android:id="@+id/rdgGenero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/edtSenha"
+        app:layout_constraintTop_toBottomOf="@+id/edtSenha">
+
+        <RadioButton
+            android:id="@+id/gMasculino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Masculino"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/gFeminino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feminino"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Treinos médios por semana"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/npDias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/npDias" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/rdgGenero"
+        app:layout_constraintTop_toBottomOf="@+id/rdgGenero"/>
+
+    <NumberPicker
+        android:id="@+id/npDias"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/rdgGenero"
+        app:layout_constraintTop_toBottomOf="@+id/rdgGenero" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

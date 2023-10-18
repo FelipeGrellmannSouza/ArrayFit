@@ -1,7 +1,14 @@
 package com.example.arrayfit.model;
 
 public class Usuario {
-    private String nome, email, senha, celular;
+    private String nome;
+    private String email;
+    private String senha;
+
+    private int treinos;
+
+
+    private String genero;
 
     public Usuario() {
     }
@@ -30,11 +37,20 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
+
+    public int getTreinos() {
+        return treinos;
+    }
+
+    public void setTreinos(int treinos) {
+        this.treinos = treinos;
+    }
+
 }

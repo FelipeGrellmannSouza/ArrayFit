@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.arrayfit.R;
@@ -28,15 +31,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class CadastroActivity extends AppCompatActivity {
     Usuario usuario;
     FirebaseAuth autenticacao;
-    EditText edtNome, edtSenha, edtEmail, edtCelular;
+    EditText edtNome, edtSenha, edtEmail;
     Button btnCadastrar;
+    RadioGroup rdgGenero;
+    RadioButton gMasculino, gFeminino;
 
+    NumberPicker npTreinos;
     String usuarioID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,8 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tela_cadastro);
 
         inicializar();
+        configNunPicker();
+
     }
 
     //método criado apenas para fins de organização
@@ -51,38 +59,69 @@ public class CadastroActivity extends AppCompatActivity {
         edtNome = findViewById(R.id.edtNome);
         edtSenha = findViewById(R.id.edtSenha);
         edtEmail = findViewById(R.id.edtEmail);
-        edtCelular = findViewById(R.id.edtCelular);
         btnCadastrar = findViewById(R.id.btnCadastrar);
+        npTreinos = findViewById(R.id.npDias);
+        rdgGenero = findViewById(R.id.rdgGenero);
+        gMasculino = findViewById(R.id.gMasculino);
+        gFeminino = findViewById(R.id.gFeminino);
     }
 
+    //verifica o genero selecionado e retorna a String relacionado a ele
+    private String generoSelecionado() {
+        int generoSelecionadoId = rdgGenero.getCheckedRadioButtonId();
+
+        if(generoSelecionadoId == R.id.gFeminino){
+            return "feminino";
+        }
+        if (generoSelecionadoId == R.id.gMasculino){
+            return "masculino";
+        }
+        else {
+            return null;
+        }
+    }
+
+    private void configNunPicker(){
+        npTreinos.setMaxValue(7);
+        npTreinos.setMinValue(1);
+    }
+
+
+
     public void validarCampos(View view){
+        String genero = generoSelecionado();
         String nome = edtNome.getText().toString();
         String email = edtEmail.getText().toString();
         String senha = edtSenha.getText().toString();
-        String celular = edtCelular.getText().toString();
+
+        int qtdTreinos = npTreinos.getValue();
         //Verifica se os campos estão preenchidos
-        if(!nome.isEmpty()){
-            if(!celular.isEmpty()){
-                if (!email.isEmpty()){
-                    if (!senha.isEmpty()){
-
-                        //estanciando objeto usuario
-                        usuario = new Usuario();
-
-                        usuario.setNome(nome);
-                        usuario.setEmail(email);
-                        usuario.setSenha(senha);
-                        usuario.setCelular(celular);
-                        //cadastro do usuario
-                        cadastrarUsuario();
+        
+        if(!nome.isEmpty()){//TIRAR
+            if (!email.isEmpty()){
+                if (!senha.isEmpty()){
+                    if(qtdTreinos != 0) {
+                        if(genero != null){
+                            //estanciando objeto usuario
+                            usuario = new Usuario();
+                            usuario.setNome(nome);
+                            usuario.setEmail(email);
+                            usuario.setSenha(senha);
+                            usuario.setGenero(genero);
+                            usuario.setTreinos(qtdTreinos);
+                            //cadastro do usuario
+                            cadastrarUsuario();
+                        }else{
+                            Toast.makeText(this, "Selecione o genero corretamente", Toast.LENGTH_SHORT).show();
+                        }
                     }else{
-                        Toast.makeText(this, "Preencha o campo senha", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Selecione a media de treinos por semana corretamente", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(this, "Preencha o campo email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Preencha o campo senha", Toast.LENGTH_SHORT).show();
                 }
             }else{
-                Toast.makeText(this, "Preencha o campo celular", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Preencha o campo email", Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(this, "Preencha o campo nome", Toast.LENGTH_SHORT).show();
@@ -122,17 +161,19 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private void SalvarDadosUsuario(){
-        String nome = edtNome.getText().toString();
-        String celular = edtCelular.getText().toString();
+        String nome = usuario.getNome();
+        String genero = usuario.getGenero();
+        int mediaTreinos = usuario.getTreinos();
 
-        Log.d("DEBUG", "Nome e celular para salvar no Firestore: " + nome + ", " + celular); // Log de debug para verificar os dados que estão sendo salvos
+        Log.d("DEBUG", "Nome e celular para salvar no Firestore: " + nome + ", " + genero+ "," + mediaTreinos); // Log de debug para verificar os dados que estão sendo salvos
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> usuarios = new HashMap<>();
         usuarios.put("nome",nome);
-        usuarios.put("celular", celular);
+        usuarios.put("genero", genero);
+        usuarios.put("media_treino",mediaTreinos);
 
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -155,6 +196,7 @@ public class CadastroActivity extends AppCompatActivity {
     private void abrirHome() {
         Intent intent = new Intent(CadastroActivity.this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void voltarTC (View view){
